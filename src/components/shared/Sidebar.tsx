@@ -116,8 +116,8 @@ export function Sidebar() {
                 backgroundImage: `url("https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80")`
               }}
             />
-            <div className="flex flex-col">
-              <h1 className="text-gray-900 dark:text-white text-base font-medium leading-normal">
+            <div className="flex flex-col min-w-0 flex-1">
+              <h1 className="text-gray-900 dark:text-white text-base font-medium leading-normal truncate">
                 {user?.email || 'Usuário'}
               </h1>
               <p className="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">
