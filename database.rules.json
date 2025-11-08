@@ -1,0 +1,22 @@
+{
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null",
+    "indicadores": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "totais": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "metricas": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "logs": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    }
+  }
+}

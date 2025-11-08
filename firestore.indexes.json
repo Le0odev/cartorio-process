@@ -1,0 +1,61 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "processos",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "statusPagamento",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "__name__",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "processos",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "statusEscritura",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "__name__",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "processos",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "natureza",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "__name__",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "processos",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "valorEmolumentos",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "__name__",
+          "order": "DESCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

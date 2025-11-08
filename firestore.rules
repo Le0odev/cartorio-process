@@ -1,0 +1,49 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Regras para usuários autenticados
+    match /{document=**} {
+      allow read, write: if request.auth != null;
+    }
+    
+    // Regras específicas para processos
+    match /processos/{processoId} {
+      allow read, write: if request.auth != null;
+      
+      // Validação de dados obrigatórios
+      allow create: if request.auth != null 
+        && request.resource.data.keys().hasAll([
+          'talao', 'status_pgto', 'status_escritura', 
+          'rgi_entrega', 'natureza', 'edificio_adquirente_responsavel',
+          'valor_emolumentos', 'corretor', 'assessoria', 'numero_sicase'
+        ])
+        && request.resource.data.valor_emolumentos is number
+        && request.resource.data.valor_emolumentos >= 0;
+    }
+    
+    // Regras para corretores
+    match /corretores/{corretorId} {
+      allow read, write: if request.auth != null;
+      
+      allow create: if request.auth != null
+        && request.resource.data.keys().hasAll(['nome', 'contato', 'status'])
+        && request.resource.data.status in ['ativo', 'inativo'];
+    }
+    
+    // Regras para assessorias
+    match /assessorias/{assessoriaId} {
+      allow read, write: if request.auth != null;
+      
+      allow create: if request.auth != null
+        && request.resource.data.keys().hasAll(['nome', 'contato']);
+    }
+    
+    // Regras para naturezas
+    match /naturezas/{naturezaId} {
+      allow read, write: if request.auth != null;
+      
+      allow create: if request.auth != null
+        && request.resource.data.keys().hasAll(['nome']);
+    }
+  }
+}
