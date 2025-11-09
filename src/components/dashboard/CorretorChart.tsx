@@ -75,7 +75,16 @@ export function EvolucaoEmolumentosChart({ data, isLoading, change }: EvolucaoEm
                 axisLine={false}
                 tickLine={false}
                 tick={{ fontSize: 12, fill: '#6b7280' }}
-                tickFormatter={(value) => `R$ ${(value / 1000).toFixed(0)}k`}
+                tickFormatter={(value) => {
+                  // Valores estão em centavos, converter para reais primeiro
+                  const reais = value / 100;
+                  if (reais >= 1000000) {
+                    return `R$ ${(reais / 1000000).toFixed(1)}M`;
+                  } else if (reais >= 1000) {
+                    return `R$ ${Math.round(reais / 1000)}k`;
+                  }
+                  return `R$ ${reais.toFixed(0)}`;
+                }}
               />
               <Tooltip
                 contentStyle={{

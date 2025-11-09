@@ -90,7 +90,7 @@ export function ValoresFinanceirosChart({ data, isLoading, change }: ValoresFina
                   if (reais >= 1000000) {
                     return `R$ ${(reais / 1000000).toFixed(1)}M`;
                   } else if (reais >= 1000) {
-                    return `R$ ${(reais / 1000).toFixed(0)}k`;
+                    return `R$ ${Math.round(reais / 1000)}k`;
                   }
                   return `R$ ${reais.toFixed(0)}`;
                 }}
